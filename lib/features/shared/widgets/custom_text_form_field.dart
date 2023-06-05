@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatelessWidget {
-  final String? label;
-  final String? hint;
-  final String? errorMessage;
   final bool obscureText;
-  final TextInputType? keyboardType;
   final Function(String)? onChanged;
+  final Function(String)? onFieldSubmitted;
+  final String? errorMessage;
   final String? Function(String?)? validator;
+  final String? hint;
+  final String? label;
+  final TextInputType? keyboardType;
 
   const CustomTextFormField({
     super.key,
-    this.label,
-    this.hint,
     this.errorMessage,
-    this.obscureText = false,
+    this.hint,
     this.keyboardType = TextInputType.text,
+    this.label,
+    this.obscureText = false,
     this.onChanged,
+    this.onFieldSubmitted,
     this.validator,
   });
 
@@ -46,6 +48,7 @@ class CustomTextFormField extends StatelessWidget {
           ]),
       child: TextFormField(
         onChanged: onChanged,
+        onFieldSubmitted: onFieldSubmitted,
         validator: validator,
         obscureText: obscureText,
         keyboardType: keyboardType,
